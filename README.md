@@ -1,63 +1,141 @@
-# Software Testing Techniques: An Online Shopping Application Case Study
+# 🎓 Student Management System (C++ Case Study)
 
-A comprehensive case study analyzing software defects in a launched e-commerce platform and providing a structured testing framework to ensure transaction accuracy, security, and scalability under heavy loads[cite: 2, 3].
+An Object-Oriented Programming (OOP) console-based application designed to manage, process, and persist student academic records without requiring an external database management system[cite: 8, 9].
 
 ---
 
-## Document Details
+## 📌 Project Overview
 
-| Field | Information |
+| Attribute | Details |
 | :--- | :--- |
-| **Institution** | Chandigarh University — University Institute of Computing[cite: 2] |
-| **Course** | Software Engineering[cite: 2] |
-| **Author** | Rakshak (UID: 25BCD10102)[cite: 2] |
-| **Program / Section** | BCA (Data Science), Semester 3, Section 25BCD2(A)[cite: 2] |
-| **Faculty Mentor** | Mrs. Shilpa Mahajan (Assistant Professor)[cite: 2] |
-| **Submission Date** | 31/11/2026[cite: 2] |
+| **🏫 Institution** | Chandigarh University — University Institute of Computing[cite: 8] |
+| **📚 Course Code & Name** | 25CAH-201: Object Oriented Programming[cite: 8] |
+| **👤 Author** | RAKSHAK (UID: 25BCD10102)[cite: 8] |
+| **🎓 Program & Section** | BCA (Data Science), Semester 3, Section 25BCD2(A)[cite: 8] |
+| **👨‍🏫 Submitted To** | Mr. Jitendra Kumar (Professor)[cite: 8] |
+| **💻 Language & Standard** | C++ (C++17 standard)[cite: 10, 11] |
+| **💾 Storage Engine** | Delimited plain text file (`students.txt`)[cite: 9, 10] |
 
 ---
 
-## Executive Summary
+## 🚀 Key Features
 
-After launching a web and mobile shopping platform, the business suffered customer complaints, abandoned carts, and financial discrepancies due to inadequate pre-release testing[cite: 3]. Critical problems included:
-
-* **Price Discrepancies:** Mismatched amounts between catalog listings and the checkout cart[cite: 3].
-* **Payment Failures:** Money deducted from accounts without order confirmation, and risks of double charging[cite: 3].
-* **Performance Degradation:** Timeouts and system freezes during high-traffic sale events[cite: 3].
-* **Security & Cart Flaws:** Flawed quantity calculations and weak access controls exposing user data[cite: 3].
-
-The case study presents a full remediation roadmap using multi-tier software testing techniques[cite: 3, 4].
-
----
-
-## Key Testing Techniques Covered
-
-* **Black-Box Testing:** Evaluates inputs vs. expected outputs without source code access (e.g., verifying subtotal calculations, form field validations)[cite: 4].
-* **White-Box Testing:** Analyzes source code logic, branches, and calculation routines (e.g., pricing formulas with delivery fees and taxes)[cite: 4].
-* **Unit Testing:** Tests individual functions in isolation (e.g., checking zero-item totals, discount deduction logic)[cite: 4].
-* **Integration Testing:** Assesses data transfer across connected modules (e.g., catalog, cart, payment gateway, inventory, order processing)[cite: 3, 5].
-* **System Testing:** Validates end-to-end user workflows from authentication through delivery tracking[cite: 5].
-* **Regression Testing:** Re-runs core test suites after code changes to ensure existing features remain stable[cite: 5].
-* **Performance Testing:** Load-tests the platform under high traffic (e.g., 1,000+ concurrent shoppers) to detect bottlenecks[cite: 5].
-* **Security Testing:** Audits authorization, input sanitization, and session safety to prevent data leaks and ID tampering[cite: 5].
+* ➕ **Add Student:** Captures student ID, name, age, course, and marks while verifying input and rejecting duplicate IDs[cite: 10, 11].
+* 📋 **Display All Records:** Outputs stored records into an aligned console table along with calculated grades[cite: 10, 11].
+* 🔍 **Search by ID:** Finds and displays individual student records matching a query ID[cite: 10, 11].
+* ✏️ **Update Student:** Edits details of existing entries with validation checks[cite: 10, 11].
+* ❌ **Delete Student:** Removes selected records from memory and updates the storage file[cite: 10, 11].
+* 📊 **Automated Grading:** Assigns letter grades ($A+$, $A$, $B$, $C$, $D$, $F$) according to entered marks[cite: 11, 12].
+* 🛡️ **Defensive Input Handling:** Validates numeric ranges and input buffers to prevent parsing failures and infinite loops[cite: 10, 13].
 
 ---
 
-## Proposed Solution & Implementation Roadmap
+## 🛠️ Tools & Technologies
 
-1. **Requirement Analysis:** Map out explicit expected behaviors for all functional flows (search, checkout, refunds, tracking)[cite: 5].
-2. **Test Planning:** Prioritize critical high-risk modules (payments, user credentials, real-time inventory updates)[cite: 6].
-3. **Formal Test Case Execution:** Run structured test matrices covering positive, negative, and edge-case inputs[cite: 6].
-4. **Idempotent Payment Handling:** Implement strict transaction IDs and duplicate-request protection to prevent double billing on connection drops[cite: 6].
-5. **Pre-Sale Load & Security Audits:** Conduct synthetic stress testing and OWASP-guided vulnerability checks before festival sales[cite: 6].
-6. **Continuous Regression & Defect Tracking:** Maintain automated checks for core workflows and log defects with reproduction steps, severity, and resolution verification[cite: 6].
+* **Programming Language:** C++17[cite: 10, 11]
+* **Compiler:** MSYS2 $g++$[cite: 10, 11]
+* **Editor:** Visual Studio Code[cite: 10]
+* **Standard Library Utilities:**
+  * `<vector>` — Dynamic collection storing `Student` objects during runtime[cite: 10, 12].
+  * `<fstream>` & `<sstream>` — Stream handling for reading from and writing to persistent storage[cite: 10, 11, 13].
+  * `<iomanip>` — Output alignment and table formatting[cite: 12, 13].
 
 ---
 
-## Standards & References
+## 🏛️ System Design & Class Architecture
 
-* R. S. Pressman & B. R. Maxim — *Software Engineering: A Practitioner's Approach*
-* I. Sommerville — *Software Engineering*
-* ISO/IEC/IEEE 29119 Series — *Software Testing*
-* ISTQB — *Certified Tester Foundation Level (CTFL)*
-* OWASP Foundation — *Web Security Testing Guide (WSTG)*
+* **`Student` Class:** Encapsulates private data members (`id`, `name`, `age`, `course`, and `marks`) and exposes public methods to fetch the identifier, compute letter grades, display aligned records, and serialize data for file saving[cite: 10, 12].
+* **`StudentManager` Class:** Controls runtime workflows, coordinates the `std::vector<Student>` collection, loads records upon initialization, saves data after modifications, and executes input validation[cite: 10, 12, 13, 14].
+
+---
+
+## 🗄️ File Storage Format
+
+Records are saved line by line inside `students.txt` using the vertical bar delimiter (`|`)[cite: 10]:
+
+```text
+101|Aman Sharma|19|BCA|85
+102|Priya Singh|20|BCA Data Science|92
+```
+
+> ⚠️ **Note:** Name and course fields cannot contain the `|` character to avoid field parsing corruption[cite: 10, 13].
+
+---
+
+## 📋 Grade Mapping Scale
+
+| Marks Range | Assigned Grade |
+| :---: | :---: |
+| $\text{Marks} \ge 90$ | **A+**[cite: 12] |
+| $80 \le \text{Marks} < 90$ | **A**[cite: 12] |
+| $70 \le \text{Marks} < 80$ | **B**[cite: 12] |
+| $60 \le \text{Marks} < 70$ | **C**[cite: 12] |
+| $50 \le \text{Marks} < 60$ | **D**[cite: 12] |
+| $\text{Marks} < 50$ | **F**[cite: 12] |
+
+---
+
+## 🧪 Validation & Constraints
+
+* **Student ID:** Must be a positive integer ($> 0$) and strictly unique[cite: 11, 14].
+* **Age:** Must be between $1$ and $120$[cite: 11, 14].
+* **Marks:** Must be a numeric value between $0.00$ and $100.00$[cite: 11, 13].
+* **Text Strings:** Must not be empty and must not contain the `|` delimiter[cite: 11, 13].
+
+---
+
+## 💻 Compilation & Execution
+
+### 1️⃣ Compile
+Ensure an environment with a C++17 compiler (such as GCC/MSYS2) is installed[cite: 10, 11]. Compile `main.cpp` using:
+
+```bash
+g++ -std=c++17 main.cpp -o student_management
+```
+
+### 2️⃣ Run
+Execute the binary in the directory containing or intended to hold `students.txt`[cite: 11]:
+
+```bash
+# Windows
+student_management.exe
+
+# Linux / macOS
+./student_management
+```
+
+---
+
+## 🖥️ Sample Console Output
+
+```text
+====================================
+     STUDENT MANAGEMENT SYSTEM      
+====================================
+1. Add Student
+2. Display All Students
+3. Search Student
+4. Update Student
+5. Delete Student
+0. Exit
+====================================
+Enter your choice: 2
+
+--- All Students ---
+ID      Name                  Age     Course            Marks     Grade
+----------------------------------------------------------------------------
+101     Arun Sharma           20      Computer Science  85.50     A
+102     Jane Smith            21      Mathematics       92.00     A+
+103     Michael Chang         19      Physics           74.00     B
+104     Priya Patel           22      Chemistry         68.50     C
+```
+*(Reference: System run output[cite: 16])*
+
+---
+
+## 🔮 Limitations & Future Improvements
+
+* 🗃️ **Database Engine:** Replace flat-text persistence with an embedded database like SQLite for ACID compliance and safer updates[cite: 16].
+* 📊 **Reporting & Analytics:** Add functionalities for class mark averages, sorting (by name or grade), and top-performer filters[cite: 16].
+* 🔐 **Authentication & Access Control:** Introduce role-based login to protect sensitive academic records[cite: 9, 16].
+* 🧩 **Modular Architecture:** Refactor code into distinct `.h` header and `.cpp` implementation files[cite: 16].
